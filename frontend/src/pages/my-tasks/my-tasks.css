@@ -1,0 +1,19 @@
+.MuiFormControl-marginNormal {
+  margin-top: 0!important;
+}
+
+.filters > div {
+  margin-right: 20px;
+}
+
+.grid, .filters, h2 {
+  margin-top: 10px;
+}
+
+.grid {
+  width: 100%;
+}
+
+#category{
+  width: 150px;
+}
