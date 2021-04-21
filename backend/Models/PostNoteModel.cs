@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace TaskManager.Models
 {
-    public class NoteModel
+    public class PostNoteModel
     {
-        public int NoteID { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
         public int CategoryID { get; set; }
         public DateTime IntentedDate { get; set; }
-        public bool Done { get; set; }
     }
 }

@@ -76,8 +76,9 @@ namespace TaskManager.Controllers
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> PostCategory(string description)
         {
+            var category = new Category { Description = description, CreationDate = DateTime.Now };
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 

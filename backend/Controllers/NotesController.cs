@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Data;
@@ -21,14 +22,22 @@ namespace TaskManager.Controllers
             _context = context;
         }
 
+        // GET: api/Notes
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Note>>> GetNotes()
+        {
+            return await _context.Notes.ToListAsync();
+        }
+
         // POST: api/Notes/List
         [HttpPost("List")]
-        public async Task<ActionResult<IEnumerable<NoteModel>>> ListNotes(FilterNotesModel filter)
+        public async Task<ActionResult<IEnumerable<GetNoteModel>>> ListNotes(FilterNotesModel filter)
         {
             var query = (
                 from note in _context.Notes
                 join category in _context.Categories on note.CategoryID equals category.CategoryID
-                select new NoteModel {
+                select new GetNoteModel
+                {
                     NoteID = note.NoteID,
                     Description = note.Description,
                     IntentedDate = note.IntentedDate,
@@ -97,8 +106,14 @@ namespace TaskManager.Controllers
 
         // POST: api/Notes/Create
         [HttpPost("Create")]
-        public async Task<ActionResult<Note>> PostNote(Note note)
+        public async Task<ActionResult<Note>> PostNote(PostNoteModel newNote)
         {
+            var note = new Note{ 
+                Description = newNote.Description,
+                CategoryID = newNote.CategoryID,
+                IntentedDate = newNote.IntentedDate
+            };
+
             _context.Notes.Add(note);
             await _context.SaveChangesAsync();
 
