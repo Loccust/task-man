@@ -7,4 +7,8 @@ export default class CategoryService {
   ListCategories(): Promise<AxiosResponse<Array<CategoryModel>>> {
     return baseApi.get('/api/Categories');
   }
+
+  CreateCategory(description: string): Promise<AxiosResponse<Array<CategoryModel>>> {
+    return baseApi.post('/api/Categories?description='+description);
+  }
 }

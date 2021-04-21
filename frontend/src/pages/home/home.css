@@ -1,0 +1,9 @@
+#container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 0 auto;
+  height: 400px;
+  max-height: 400px;
+  width: 650px;
+  margin-top: 5%;
+}

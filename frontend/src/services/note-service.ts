@@ -6,8 +6,8 @@ import InsertNoteModel from '../model/insert-note-model';
 const baseApi = axios.create(servicesSettings);
 
 export default class NoteService {
-  ListNotes(filter: NoteFilterModel): Promise<AxiosResponse<Array<ListNoteModel>>> {
-    return baseApi.post('/api/Notes/List', filter);
+  ListNotes(filter?: NoteFilterModel): Promise<AxiosResponse<Array<ListNoteModel>>> {
+    return baseApi.post('/api/Notes/List', filter || {});
   }
   CreateNote(note: InsertNoteModel){
     return baseApi.post('/api/Notes/Create', note)

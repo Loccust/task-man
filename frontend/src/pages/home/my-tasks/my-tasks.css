@@ -1,0 +1,24 @@
+#my-tasks{
+  margin-top: 20px;
+}
+
+.description {
+  width: 225px;
+}
+
+.description button{
+  float: right;
+}
+
+.description b{
+  margin-bottom: -2px;
+}
+
+.more {
+  font-size: 10pt;
+  margin-left: 15px;
+}
+
+.task input[type='checkbox']{
+  margin-right: 10px;
+}
